@@ -3,47 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El viejo y sus hijos</title>
+    <title>El Viejo y sus Hijos</title>
     <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --primary-color: #2b6cb0;
+            --primary-hover: #1d4ed8;
+            --text-color: #2d3748;
+            --border-color: #e2e8f0;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            max-width: 800px;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            max-width: 650px;
+            width: 100%;
+            border-top: 6px solid var(--primary-color);
+        }
+
         h1 {
-            text-align: center;
-            color: #2c3e50;
+            color: var(--primary-color);
             font-size: 24px;
-            margin-bottom: 25px;
+            margin-top: 0;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #edf2f7;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 500;
         }
-        .dialogue {
-            margin-left: 10px;
-            font-style: italic;
+
+        .btn-copy {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.1s;
         }
+
+        .btn-copy:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-copy:active {
+            transform: scale(0.98);
+        }
+
+        .text-area {
+            background-color: #fafafa;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            line-height: 1.6;
+            font-size: 16px;
+            max-height: 420px;
+            overflow-y: auto;
+        }
+
+        .text-area p {
+            margin: 0 0 15px 0;
+        }
+
+        .toast {
+            visibility: hidden;
+            min-width: 200px;
+            background-color: #38a169;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
     </style>
 </head>
 <body>
 
-    <h1>EL VIEJO Y SUS HIJOS</h1>
+<div class="container">
+    <h1>El Viejo y sus Hijos</h1>
+    
+    <div class="meta-info">
+        <span>Palabras: <span id="count">0</span></span>
+        <button class="btn-copy" onclick="copyText()">Copiar Texto</button>
+    </div>
 
-    <p>Érase una vez un buen hombre que toda su vida se había dedicado a labrar la tierra para obtener alimentos con los que sostener a su lastimosa familia. Era mayor y tenía varios hijos a los que sacar adelante. Todos eran buenos chicos, pero cada uno tenía un carácter tan distinto que se pasaban el día peleándose entre ellos por las cosas más absurdas. En casa siempre se escuchaban broncas, gritos y portazos.</p>
+    <div class="text-area" id="transcriptionText">
+        <p>Érase una vez un buen hombre que toda su vida se había dedicado a labrar la tierra para obtener alimentos con los que sostener a su lastimosa familia. Era mayor y tenía varios hijos a los que sacar adelante. Todos eran buenos chicos, pero cada uno tenía un carácter tan distinto que se pasaban el día peleándose entre ellos por las cosas más absurdas. En casa siempre se escuchaban broncas, gritos y portazos.</p>
+        
+        <p>El labrador estaba desesperado. Ya no sabía qué hacer para que sus hijos se llevaran bien, como debe ser entre hermanos que se quieren. Una tarde se sentó frente a una chimenea frente al comedor y, al calor del fuego, se puso a meditar. Estos chicos necesitaban una lección que les hiciera entender que las cosas debían cambiar. Las lucecitas iluminaron su cerebro.</p>
+        
+        <p>— Vengan todos para acá, tengo algo que decirles.</p>
+        
+        <p>Los hermanos acudieron obedientemente a la llamada de su padre. ¿Qué querría a esas horas?</p>
+        
+        <p>— Los he mandado a llamar porque necesito que salgan fuera de la casa y recojan cada uno un palo delgado de esos que hay tirados por el campo.</p>
+        
+        <p>— Papá, ¿estás bien? ¿Para qué quieres que traigamos un palo?</p>
+        
+        <p>Cuando regresaron, el padre juntó todos los palitos individuales y los amarró fuertemente con una cuerda, formando un fajo grueso.</p>
+        
+        <p>— A ver, ¿quién de ustedes es capaz de romper este haz de palitos?</p>
+        
+        <p>Uno a uno, los chicos fueron agarrando el grupo de palitos amarrados y con todas sus fuerzas intentaron partirlos, pero ninguno lo consiguió; estaban desconcentrados y la unión de las maderas los hacía irrompibles. Al ver esto, el padre desató la cuerda que los unía.</p>
+        
+        <p>— Ahora, tomen cada uno el suyo y traten de romperlo.</p>
+        
+        <p>Como era de esperar, fue fácil para ellos romper una simple ramita suelta, sin quitar el ojo a su padre. Empezaron a escuchar qué era lo que tenía que decirles y qué explicación tenía todo aquello.</p>
+        
+        <p>— Hijo mío, espero que con esto haya podido transmitirles un mensaje claro sobre cómo han de comportarse los hermanos. Si no permanecen juntos, será fácil que les hagan daño; si están unidos y ponen su parte para apoyarse unos a otros, nada podrá separarlos y nadie podrá vencerlos. Se cierra la pregunta.</p>
+        
+        <p>Los hermanos se quedaron con la boca abierta y se hizo tal silencio que hasta se podía oír el zumbido de las moscas. Su padre acababa de darle una gran lección con un solo ejemplo.</p>
+        
+        <p>Moraleja: La unión hace la fuerza y nos protege del peligro. Cuida a los demás.</p>
+    </div>
+</div>
 
-    <p>El labrador estaba desesperado. Ya no sabía qué hacer para que sus hijos se llevaran bien, como debe ser entre hermanos que se quieren. Una tarde se sentó frente a una chimenea frente al comedor y, al calor del fuego, se puso a meditar. Estos chicos necesitaban una lección que les hiciera entender que las cosas debían cambiar. Las lucecitas iluminaron su cerebro.</p>
+<div id="toast" class="toast">¡Texto copiado con éxito!</div>
 
-    <p class="dialogue">— Vengan todos para acá, tengo algo que decirles.</p>
+<script>
+    function countWords() {
+        const text = document.getElementById('transcriptionText').innerText;
+        const cleanText = text.trim().replace(/\s+/g, ' ');
+        const words = cleanText ? cleanText.split(' ') : [];
+        document.getElementById('count').innerText = words.length;
+    }
 
-    <p>Los hermanos acudieron obedientemente a la llamada de su padre. ¿Qué querría a esas horas?</p>
+    function copyText() {
+        const text = document.getElementById('transcriptionText').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            showToast();
+        }).catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast();
+        });
+    }
 
-    <p class="dialogue">— Los he mandado a llamar porque necesito que salgan fuera de la casa y recojan cada uno un palo delgado de esos que hay tirados por el campo.</p>
+    function showToast() {
+        const toast = document.getElementById('toast');
+        toast.className = "toast show";
+        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+    }
 
-    <p class="dialogue">— Papá, ¿estás bien? ¿Para qué quieres que traigamos un palo?</p>
+    window.onload = countWords;
+</script>
 
 </body>
 </html>
-
